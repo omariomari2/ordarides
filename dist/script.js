@@ -1,15 +1,22 @@
 var swiper = new Swiper(".mySwiper", {
   navigation: {
     nextEl: ".swiper-next-button",
-    prevEl: ".swiper-prev-button" },
-
+    prevEl: ".swiper-prev-button"
+  },
   effect: "fade",
-  loop: "infinite",
+  loop: false,
+  allowTouchMove: true,
+  speed: 800,
   pagination: {
     el: ".swiper-pagination",
-    type: "fraction" } });
-
-
+    type: "fraction"
+  },
+  on: {
+    init: function() {
+      document.body.setAttribute('data-sld', this.realIndex);
+    }
+  }
+});
 
 swiper.on('slideChange', function (sld) {
   document.body.setAttribute('data-sld', sld.realIndex);
@@ -58,6 +65,9 @@ navMenu.addEventListener("click", function(event) {
   if (!isNaN(slideIndex)) {
     // Smoothly slide to the selected slide
     swiper.slideTo(slideIndex, 800);
+    
+    // Update data-sld attribute
+    document.body.setAttribute('data-sld', slideIndex);
   }
   
   // Close the navigation menu
@@ -71,3 +81,6 @@ if (navCloseBtn) {
     toggleNav(false);
   });
 }
+
+// Initialize the first slide
+document.body.setAttribute('data-sld', '0');
