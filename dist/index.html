@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Product Showcase UI</title>
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+<link rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+	<div class="header">
+		<a class="menu-icon" id="btn-nav-toggle" aria-expanded="false" aria-controls="slideout-nav" aria-label="Toggle navigation menu" href="#">
+			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+			</svg>
+		</a>
+		<span class="logo">ORDA</span>
+		<div class="header-icons">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+				<path d="M437.02 330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521 243.251 404 198.548 404 148 404 66.393 337.607 0 256 0S108 66.393 108 148c0 50.548 25.479 95.251 64.262 121.962-36.21 12.495-69.398 33.136-97.281 61.018C26.629 379.333 0 443.62 0 512h40c0-119.103 96.897-216 216-216s216 96.897 216 216h40c0-68.38-26.629-132.667-74.98-181.02zM256 256c-59.551 0-108-48.448-108-108S196.449 40 256 40s108 48.448 108 108-48.449 108-108 108z" />
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208.955 208.955">
+				<path d="M190.85 200.227L178.135 58.626a7.5 7.5 0 00-7.47-6.829h-26.221V39.971c0-22.04-17.93-39.971-39.969-39.971-22.038 0-39.966 17.931-39.966 39.971v11.826H38.27a7.5 7.5 0 00-7.47 6.829L18.035 200.784a7.5 7.5 0 007.47 8.17h157.946a7.5 7.5 0 007.399-8.727zM79.509 39.971c0-13.769 11.2-24.971 24.967-24.971 13.768 0 24.969 11.202 24.969 24.971v11.826H79.509V39.971zm-45.8 153.984L45.127 66.797h19.382v13.412a7.5 7.5 0 007.5 7.5 7.5 7.5 0 007.5-7.5V66.797h49.936v13.412a7.5 7.5 0 007.5 7.5 7.5 7.5 0 007.5-7.5V66.797h19.364l11.418 127.158H33.709z" />
+			</svg>
+		</div>
+	</div>
+	<!-- Slide-out Navbar (hidden by default) -->
+	<nav id="slideout-nav" aria-hidden="true">
+		<button id="btn-nav-close" aria-label="Close navigation menu" style="background:none;border:none;position:absolute;top:1.2rem;right:1.2rem;z-index:1100;cursor:pointer;font-size:2rem;line-height:1;">
+			<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+		</button>
+		<ul id="nav-menu" role="list" aria-labelledby="btn-nav-toggle">
+			<li style="--i: 1;"><a href="#beach" data-slide="0"><span>Home</span></a></li>
+			<li style="--i: 2;"><a href="#savanna" data-slide="1"><span>Features</span></a></li>
+			<li style="--i: 3;"><a href="#glacier" data-slide="2"><span>Become A Rider</span></a></li>
+			<li style="--i: 4;"><a href="#mountains" data-slide="3"><span>Enlist Your Business</span></a></li>
+			<li style="--i: 5;"><a href="#forest" data-slide="4"><span>Support</span></a></li>
+		</ul>
+	</nav>
+	<div class="mySwiper">
+		<div class="main-wrapper swiper-wrapper">
+			<div class="main swiper-slide" id="beach">
+				<div class="left-side">
+					<div class="main-wrapper">
+						<h3 class="main-header">MADE FOR YOUR COMMUNITY</h3>
+						<h2 class="main-subtitle">Delivering <span style="text-decoration: underline; font-style: italic;">Change</span>, One Ride at a <span style="font-style: italic; text-decoration: underline;">Time</span>.</h2>
+						<!-- <h1 class="main-title">Beach</h1> -->
+					</div>
+					<div class="main-content">
+						<div class="main-content__title">In Ghana, inefficient transport infrastructure costs the economy the equivalent of 8.3 % of GDP annually</div>
+						<div class="main-content__subtitle">Our mission is to provide safe, affordable, and reliable mobility solutions that empower communities and businesses across Ghana. We simplify transportation through technology, delivering seamless experiences for riders while creating sustainable growth opportunities for drivers and partners.</div>
+						<div class="more-menu">
+							Get Started With ORDA RIDES now
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<line x1="-5" y1="12" x2="19" y2="12" />
+								<line x1="15" y1="16" x2="19" y2="12" />
+								<line x1="15" y1="8" x2="19" y2="12" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<div class="center">
+					<div class="right-side__img">
+						<img class="bottle-bg" src="images/road.jpg" alt="">
+						<img class="bottle-img" src="images/orda.png" id="main-picture"/>
+					</div>
+				</div>
+				<div class="right-side">
+          <div class="main-wrapper">
+            <h3 class="main-header">The Ride You Need, The Price You Love</h3>
+            <h1 class="main-title">ORDA RIDES</h1>
+            <h2 class="main-header">From Here to There, Ride ORDA Everywhere.</h2><br>
+          </div>
+          <div class="main-content">
+            <div class="main-content__title"></div>
+            <div class="main-content__subtitle">
+				<ul>
+					<li>Affordable Rides, Anytime</li>
+					<li>Fast and Reliable Delivery</li>
+					<li>Real-Time Local News and Updates</li>
+				</ul>
+				<div class="cta-buttons">
+					<button class="cta-btn cta-get-started">
+						<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:middle;" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+						Get Started
+					</button>
+					<button class="cta-btn cta-playstore">
+						<svg width="20" height="20" viewBox="0 0 512 512" style="margin-right:8px;vertical-align:middle;"><path fill="#34A853" d="M325.3 234.3L104.7 13.7C98.2 7.2 88.2 7.2 81.7 13.7c-3.2 3.2-5 7.5-5 12v460.6c0 4.5 1.8 8.8 5 12 3.2 3.2 7.5 5 12 5 2.9 0 5.8-.7 8.3-2.3l220.6-220.6c6.5-6.5 6.5-16.9 0-23.4z"/><path fill="#FBBC05" d="M372.6 272.1l-47.3-47.3-220.6 220.6c-2.5 2.5-5.4 2.3-8.3 2.3 4.5 0 8.8-1.8 12-5 3.2-3.2 5-7.5 5-12V25.7c0-4.5-1.8-8.8-5-12 3.2 3.2 7.5 5 12 5 2.9 0 5.8-.7 8.3-2.3l220.6 220.6c6.5 6.5 6.5 16.9 0 23.4z"/><path fill="#EA4335" d="M432.3 236.2l-59.7-34.4-47.3 47.3 47.3 47.3 59.7-34.4c8.2-4.7 8.2-16.5 0-21.2z"/><path fill="#4285F4" d="M325.3 277.7l-47.3-47.3-220.6 220.6c-2.5 2.5-5.4 2.3-8.3 2.3 4.5 0 8.8-1.8 12-5 3.2-3.2 5-7.5 5-12V25.7c0-4.5-1.8-8.8-5-12 3.2 3.2 7.5 5 12 5 2.9 0 5.8-.7 8.3-2.3l220.6 220.6c6.5 6.5 6.5 16.9 0 23.4z"/></svg>
+						Playstore
+					</button>
+					<button class="cta-btn cta-appstore" disabled>
+						<svg width="20" height="20" viewBox="0 0 24 24" style="margin-right:8px;vertical-align:middle;"><path fill="#000" d="M17.564 13.307c-.02-2.043 1.668-3.018 1.742-3.062-0.95-1.39-2.426-1.582-2.946-1.6-1.252-.127-2.44.73-3.075.73-.634 0-1.613-.713-2.654-.693-1.364.02-2.627.793-3.33 2.018-1.426 2.47-.364 6.12 1.022 8.12.676.98 1.48 2.08 2.54 2.04 1.03-.04 1.42-.66 2.67-.66 1.25 0 1.59.66 2.67.64 1.1-.02 1.79-1 2.46-1.98.78-1.13 1.1-2.23 1.12-2.29-.02-.01-2.15-.82-2.17-3.25zm-2.06-6.01c.56-.68.94-1.62.84-2.56-.81.03-1.78.54-2.36 1.22-.52.6-.98 1.56-.81 2.48.86.07 1.77-.44 2.33-1.14z"/></svg>
+						Apple App Store <span style="font-size: 0.4dem;">(soon)</span>
+					</button>
+				</div>
+			</div>
+          </div>
+        </div>
+			</div>
+			
+			
+
+			<div class="main swiper-slide" id="savanna">
+				<div class="left-side">
+					<div class="main-wrapper">
+						<h3 class="main-header">Outstanding Features</h3>
+						<!-- <h1 class="main-title">WHY US?</h1> -->
+						<h2 class="main-subtitle"><span style="text-decoration: underline; font-style: italic;">ORDA</span> is designed with You in mind!</h2>
+						<p>
+							Book Rides,<br>
+							Get your items delivered,<br>
+							And stay updated about your community<br>
+							All in one App!
+						</p>
+					</div>
+					<div class="main-content">
+						<div class="main-content__title">With ORDA, You’re not just booking a ride
+						</div>
+						<div class="main-content__subtitle">You’re backing a movement. We’re built for Ghanaian communities, by people who understand the pulse of the neighborhood.</div>
+						<div class="more-menu">
+							Support our movement
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<line x1="-5" y1="12" x2="19" y2="12" />
+								<line x1="15" y1="16" x2="19" y2="12" />
+								<line x1="15" y1="8" x2="19" y2="12" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<div class="center">
+					<div class="right-side__img">
+						<img class="bottle-bg" src="images/moto.jpg" alt="">
+						<div style="overflow-y: hidden;">
+							<img class="bottle-img" src="images/daughter.png"/>
+						</div>
+					</div>
+				</div>
+				<div class="right-side">
+  <div class="main-wrapper">
+    <h3 class="main-header">Discover the ORDA Difference</h3>
+    <h1 class="main-title">Why ORDA?</h1>
+    <h2 class="main-subtitle">Built for You, Powered by Community</h2>
+  </div>
+  <div class="main-content">
+    <div class="main-content__title">Our Promise to You</div>
+    <div class="main-content__subtitle">
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header"><span class="accordion-number">01</span> We're Community-Powered</button>
+          <div class="accordion-body">
+            <p>Every driver is a neighbor. Every route is familiar. Our platform puts local faces behind the wheel—people who know your school run, your market path, your go-to mechanic.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header"><span class="accordion-number">02</span> We're For Everyone</button>
+          <div class="accordion-body">
+            <p>No smartphone? No problem. ORDA offers simple booking tools that work for tech-savvy teens and tech-shy aunties alike. Because reliable transport should be a right—not a luxury.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header"><span class="accordion-number">03</span> We're More Than Rides</button>
+          <div class="accordion-body">
+            <p>ORDA keeps your day moving—from errands to deliveries to breaking community news. We're building one platform that understands local hustle and helps you navigate life with ease.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header"><span class="accordion-number">04</span> We're Driving Change</button>
+          <div class="accordion-body">
+            <p>Every trip helps uncover gaps, boost small business, and open doors. ORDA tracks mobility patterns that help local leaders understand how to serve you better—and faster.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header"><span class="accordion-number">05</span> We Believe in You</button>
+          <div class="accordion-body">
+            <p>We built ORDA for families, for hustlers, for elders, for dreamers. For people with places to be and stories to write.</p>
+          </div>
+        </div>
+      </div>
+      <script>
+        // Enhanced accordion with smooth sequential transitions
+        document.addEventListener('DOMContentLoaded', function() {
+          const headers = document.querySelectorAll('.accordion-header');
+          let isAnimating = false;
+          
+          async function toggleAccordion(header) {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const body = header.nextElementSibling;
+            const isOpening = !body.classList.contains('active');
+            
+            // Close all open accordions first
+            const openBodies = document.querySelectorAll('.accordion-body.active');
+            for (const openBody of openBodies) {
+              if (openBody !== body) {
+                openBody.classList.remove('active');
+                openBody.previousElementSibling.classList.remove('active');
+                // Wait for the close animation to complete
+                await new Promise(resolve => {
+                  openBody.addEventListener('transitionend', resolve, { once: true });
+                });
+              }
+            }
+            
+            // Toggle the clicked accordion
+            if (isOpening) {
+              body.classList.add('active');
+              header.classList.add('active');
+            } else {
+              body.classList.remove('active');
+              header.classList.remove('active');
+            }
+            
+            isAnimating = false;
+          }
+          
+          headers.forEach(header => {
+            header.addEventListener('click', () => toggleAccordion(header));
+          });
+          
+          // Open first accordion by default after a short delay
+          setTimeout(() => {
+            if (headers.length > 0 && !document.querySelector('.accordion-body.active')) {
+              toggleAccordion(headers[0]);
+            }
+          }, 300);
+        });
+      </script>
+    </div>
+  </div>
+</div>
+			</div>
+			<div class="main swiper-slide" id="glacier">
+				<div class="left-side">
+					<div class="main-wrapper">
+						<h3 class="main-header">Become A Rider</h3>
+						<!-- <h1 class="main-title">Glacier</h1> -->
+						<h2 class="main-subtitle"><span style="text-decoration: underline; font-style: italic;">ORDA</span> Rides gives you the support you need to succeed as a <span style="text-decoration: underline; font-style: italic;">Rider</span>.</h2>
+					</div>
+					<div class="main-content">
+						<div class="main-content__title">It’s more than just a job
+						</div>
+						<div class="main-content__subtitle">By riding for us, you’re building your own business, earning on your terms, and helping your community move forward—one ride at a time.</div>
+						<div class="more-menu">
+							Become an ORDA Rider
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<line x1="-5" y1="12" x2="19" y2="12" />
+								<line x1="15" y1="16" x2="19" y2="12" />
+								<line x1="15" y1="8" x2="19" y2="12" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<div class="center">
+					<div class="right-side__img">
+						<img class="bottle-bg" src="images/womanbike.png" alt="">
+						<img class="bottle-img" src="images/okada.png" />
+					</div>
+				</div>
+				<div class="right-side">
+          <div class="main-wrapper">
+            <h3 class="main-header">Play an Active Role in the Change</h3>
+            <h1 class="main-title">Ride For Us</h1>
+            <h2 class="main-subtitle">Sign Up and Get Approved</h2>
+          </div>
+          <div class="main-content">
+            <div class="main-content__title">As an ORDA Rider, you earn more by enjoying fair commissions that let you keep a larger share of your income. Plus, our reliable 24/7 support ensures you’re never alone on the road, giving you the confidence to focus on what matters—making every trip count.</div>
+			<div class="more-menu">
+				Start Your Journey
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+					<line x1="-5" y1="12" x2="19" y2="12" />
+					<line x1="15" y1="16" x2="19" y2="12" />
+					<line x1="15" y1="8" x2="19" y2="12" />
+				</svg>
+			</div>
+          </div>
+        </div>
+			</div>
+			<div class="main swiper-slide" id="coral">
+				<div class="left-side">
+					<div class="main-wrapper">
+						<h3 class="main-header">Enlist Your Business</h3>
+						<!-- <h1 class="main-title">Coral</h1> -->
+						<h2 class="main-subtitle"><span style="text-decoration: underline; font-style: italic;">ORDA</span> helps your business connect with more customers and grow faster.</h2>
+					</div>
+					<div class="main-content">
+						<div class="main-content__title">We offer more than visibility.
+						</div>
+						<div class="main-content__subtitle">By joining ORDA, you give your products and services a direct path to customers who need them, and join an extensive network of oher businesses, creating new opportunities every day.</div>
+						<div class="more-menu">
+							Enlist Now
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<line x1="-5" y1="12" x2="19" y2="12" />
+								<line x1="15" y1="16" x2="19" y2="12" />
+								<line x1="15" y1="8" x2="19" y2="12" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<div class="center">
+					<div class="right-side__img">
+						<img class="bottle-bg" src="images/makola.jpg" alt="">
+						<img class="bottle-img" src="images/woman.png" />
+					</div>
+				</div>
+				<div class="right-side">
+          <div class="main-wrapper">
+            <h3 class="main-header">Partner with ORDA</h3>
+            <h1 class="main-title">Join Us</h1>
+            <h2 class="main-subtitle">Put your business on the Map</h2>
+          </div>
+          <div class="main-content">
+            <div class="main-content__title">With real-time order tracking, safe payment options, and dedicated support, ORDA makes it easy for you to manage deliveries and keep customers happy.</div>
+            <div class="main-content__subtitle">Be part of a platform built for local businesses like yours. Let’s grow together.</div>
+          </div>
+        </div>
+			</div>
+		</div>
+	</div>
+	<div class="button-wrapper">
+		<div class="swiper-button swiper-prev-button">
+			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+			</svg>
+		</div>
+		<div class="swiper-button swiper-next-button">
+			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+			</svg>
+		</div>
+	</div>
+	<div class="swiper-pagination"></div>
+</div>
+<!-- partial -->
+  <script src='https://unpkg.com/swiper/swiper-bundle.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
