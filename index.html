@@ -12,31 +12,22 @@
 <!-- partial:index.partial.html -->
 <div class="container">
 	<div class="header">
-		<a class="menu-icon" id="btn-nav-toggle" aria-expanded="false" aria-controls="slideout-nav" aria-label="Toggle navigation menu" href="#">
-			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-			</svg>
-		</a>
 		<span class="logo">ORDA</span>
+		<nav class="navbar">
+			<ul class="nav-menu">
+				<li><a href="#beach" data-slide="0">Home</a></li>
+				<li><a href="#savanna" data-slide="1">Features</a></li>
+				<li><a href="#glacier" data-slide="2">Become A Rider</a></li>
+				<li><a href="#coral" data-slide="3">Enlist Your Business</a></li>
+				<li><a href="#support" data-slide="4">Support</a></li>
+			</ul>
+		</nav>
 		<div class="header-icons">
 			<svg width="22" height="22" viewBox="0 0 512 512" style="margin-right:18px;vertical-align:middle;"><path fill="#34A853" d="M325.3 234.3L104.7 13.7C98.2 7.2 88.2 7.2 81.7 13.7c-3.2 3.2-5 7.5-5 12v460.6c0 4.5 1.8 8.8 5 12 3.2 3.2 7.5 5 12 5 2.9 0 5.8-.7 8.3-2.3l220.6-220.6c6.5-6.5 6.5-16.9 0-23.4z"/><path fill="#FBBC05" d="M372.6 272.1l-47.3-47.3-220.6 220.6c-2.5 2.5-5.4 2.3-8.3 2.3 4.5 0 8.8-1.8 12-5 3.2-3.2 5-7.5 5-12V25.7c0-4.5-1.8-8.8-5-12 3.2 3.2 7.5 5 12 5 2.9 0 5.8-.7 8.3-2.3l220.6 220.6c6.5 6.5 6.5 16.9 0 23.4z"/><path fill="#EA4335" d="M432.3 236.2l-59.7-34.4-47.3 47.3 47.3 47.3 59.7-34.4c8.2-4.7 8.2-16.5 0-21.2z"/><path fill="#4285F4" d="M325.3 277.7l-47.3-47.3-220.6 220.6c-2.5 2.5-5.4 2.3-8.3 2.3 4.5 0 8.8-1.8 12-5 3.2-3.2 5-7.5 5-12V25.7c0-4.5-1.8-8.8-5-12 3.2 3.2 7.5 5 12 5 2.9 0 5.8-.7 8.3-2.3l220.6 220.6c6.5-6.5 6.5-16.9 0-23.4z"/></svg>
 			<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3.08 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.92z"/></svg>
 		</div>
 	</div>
-	<!-- Slide-out Navbar (hidden by default) -->
-	<nav id="slideout-nav" aria-hidden="true">
-		<button id="btn-nav-close" aria-label="Close navigation menu" style="background:none;border:none;position:absolute;top:1.2rem;right:1.2rem;z-index:1100;cursor:pointer;font-size:2rem;line-height:1;">
-			<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-		</button>
-		<ul id="nav-menu" role="list" aria-labelledby="btn-nav-toggle">
-			<li style="list-style: none; text-align: center; font-weight: bold; font-size: 1.3em; margin-bottom: 1em; letter-spacing: 0.1em;">ORDA RIDES</li>
-			<li style="--i: 1;"><a href="#beach" data-slide="0"><span>Home</span></a></li>
-			<li style="--i: 2;"><a href="#savanna" data-slide="1"><span>Features</span></a></li>
-			<li style="--i: 3;"><a href="#glacier" data-slide="2"><span>Become A Rider</span></a></li>
-			<li style="--i: 4;"><a href="#coral" data-slide="3"><span>Enlist Your Business</span></a></li>
-			<li style="--i: 5;"><a href="#support" data-slide="4"><span>Support</span></a></li>
-		</ul>
-	</nav>
+
 	<div class="mySwiper">
 		<div class="main-wrapper swiper-wrapper">
 			<div class="main swiper-slide" id="beach">
