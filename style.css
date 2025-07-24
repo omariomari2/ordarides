@@ -87,6 +87,7 @@ body {
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 62px;
   width: 100%;
   white-space: nowrap;
@@ -104,6 +105,49 @@ body {
   .header {
     width: calc(100% + 20px);
     margin-left: -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    gap: 16px;
+  }
+  
+  .nav-menu a {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 0;
+    gap: 12px;
+  }
+  
+  .logo {
+    margin: 0;
+  }
+  
+  .navbar {
+    order: 2;
+  }
+  
+  .header-icons {
+    order: 3;
+  }
+  
+  .nav-menu {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-menu a {
+    font-size: 13px;
+    padding: 4px 8px;
   }
 }
 .header-menu {
@@ -127,8 +171,49 @@ body {
 .header .menu-icon svg {
   width: 22px;
 }
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-menu a {
+  color: var(--body-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-menu a:hover {
+  color: #e86357;
+  background-color: rgba(232, 99, 87, 0.1);
+}
+
+.nav-menu a.active {
+  color: #e86357;
+  background-color: rgba(232, 99, 87, 0.15);
+}
+
 .header-icons {
-  margin-left: auto;
   display: flex;
   align-items: center;
 }

@@ -11,6 +11,9 @@ var swiper = new Swiper(".mySwiper", {
     el: ".swiper-pagination",
     type: "fraction"
   },
+  mousewheel: {
+    enabled: false
+  },
   on: {
     init: function() {
       document.body.setAttribute('data-sld', this.realIndex);
@@ -20,38 +23,25 @@ var swiper = new Swiper(".mySwiper", {
 
 swiper.on('slideChange', function (sld) {
   document.body.setAttribute('data-sld', sld.realIndex);
+  
+  // Reset scroll position to top when slide changes
+  const container = document.querySelector('.container');
+  container.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  
+  // Update active nav item
+  const navMenu = document.querySelector(".nav-menu");
+  navMenu.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+  const activeLink = navMenu.querySelector(`a[data-slide="${sld.realIndex}"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
 });
 
-// Slide-out Navbar Toggle Logic
-const navToggleBtn = document.getElementById("btn-nav-toggle");
-const slideoutNav = document.getElementById("slideout-nav");
-const navMenu = document.getElementById("nav-menu");
-const navCloseBtn = document.getElementById("btn-nav-close");
-
-function toggleNav(expand) {
-  navToggleBtn.setAttribute("aria-expanded", String(expand));
-  slideoutNav.setAttribute("aria-hidden", String(!expand));
-  if (expand) {
-    document.body.classList.add("slideout-nav-open");
-    document.addEventListener("click", handleOutsideClick);
-  } else {
-    document.body.classList.remove("slideout-nav-open");
-    document.removeEventListener("click", handleOutsideClick);
-  }
-}
-
-function handleOutsideClick(event) {
-  if (!slideoutNav.contains(event.target) && !navToggleBtn.contains(event.target)) {
-    toggleNav(false);
-  }
-}
-
-navToggleBtn.addEventListener("click", function(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  const isExpanded = navToggleBtn.getAttribute("aria-expanded") === "true";
-  toggleNav(!isExpanded);
-});
+// Navbar Navigation Logic
+const navMenu = document.querySelector(".nav-menu");
 
 // Handle navigation when a menu item is clicked
 navMenu.addEventListener("click", function(event) {
@@ -59,6 +49,12 @@ navMenu.addEventListener("click", function(event) {
   if (!link) return;
   
   event.preventDefault();
+  
+  // Remove active class from all links
+  navMenu.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+  
+  // Add active class to clicked link
+  link.classList.add('active');
   
   // Get the slide index from data attribute
   const slideIndex = parseInt(link.getAttribute('data-slide'));
@@ -69,18 +65,70 @@ navMenu.addEventListener("click", function(event) {
     // Update data-sld attribute
     document.body.setAttribute('data-sld', slideIndex);
   }
-  
-  // Close the navigation menu
-  toggleNav(false);
 });
 
-// Close nav when close button is clicked
-if (navCloseBtn) {
-  navCloseBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    toggleNav(false);
-  });
-}
+// Update active nav item when slide changes (handled in main slideChange event above)
 
 // Initialize the first slide
 document.body.setAttribute('data-sld', '0');
+
+// Enhanced scroll handling - only change slides at scroll boundaries
+let isScrolling = false;
+let scrollTimeout;
+let lastScrollTime = 0;
+let scrollAttempts = 0;
+
+// Track scroll position and handle slide navigation
+function handleScrollNavigation(e) {
+  const currentTime = Date.now();
+  
+  // Debounce scroll events
+  if (isScrolling || (currentTime - lastScrollTime) < 300) {
+    return false;
+  }
+  
+  // Only respond to significant scroll movements
+  const deltaY = Math.abs(e.deltaY);
+  if (deltaY < 20) {
+    return false;
+  }
+  
+  const container = document.querySelector('.container');
+  const scrollTop = container.scrollTop;
+  const scrollHeight = container.scrollHeight;
+  const clientHeight = container.clientHeight;
+  
+  const atTop = scrollTop <= 5;
+  const atBottom = scrollTop + clientHeight >= scrollHeight - 5;
+  
+  let shouldChangeSlide = false;
+  
+  if (e.deltaY > 0 && atBottom) {
+    // Scrolling down at bottom - go to next slide
+    shouldChangeSlide = true;
+    swiper.slideNext();
+  } else if (e.deltaY < 0 && atTop) {
+    // Scrolling up at top - go to previous slide
+    shouldChangeSlide = true;
+    swiper.slidePrev();
+  }
+  
+  if (shouldChangeSlide) {
+    e.preventDefault();
+    isScrolling = true;
+    lastScrollTime = currentTime;
+    
+    // Reset scrolling flag after delay
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 800);
+    
+    return true;
+  }
+  
+  return false;
+}
+
+// Add wheel event listener to container
+document.querySelector('.container').addEventListener('wheel', handleScrollNavigation, { passive: false });
