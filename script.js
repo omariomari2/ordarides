@@ -12,10 +12,7 @@ var swiper = new Swiper(".mySwiper", {
     type: "fraction"
   },
   mousewheel: {
-    enabled: true,
-    sensitivity: 1,
-    thresholdDelta: 50,
-    thresholdTime: 500
+    enabled: false
   },
   on: {
     init: function() {
@@ -26,6 +23,21 @@ var swiper = new Swiper(".mySwiper", {
 
 swiper.on('slideChange', function (sld) {
   document.body.setAttribute('data-sld', sld.realIndex);
+  
+  // Reset scroll position to top when slide changes
+  const container = document.querySelector('.container');
+  container.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  
+  // Update active nav item
+  const navMenu = document.querySelector(".nav-menu");
+  navMenu.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+  const activeLink = navMenu.querySelector(`a[data-slide="${sld.realIndex}"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
 });
 
 // Navbar Navigation Logic
@@ -55,61 +67,68 @@ navMenu.addEventListener("click", function(event) {
   }
 });
 
-// Update active nav item when slide changes
-swiper.on('slideChange', function (sld) {
-  // Remove active class from all nav links
-  navMenu.querySelectorAll('a').forEach(a => a.classList.remove('active'));
-  
-  // Add active class to current slide's nav link
-  const activeLink = navMenu.querySelector(`a[data-slide="${sld.realIndex}"]`);
-  if (activeLink) {
-    activeLink.classList.add('active');
-  }
-});
+// Update active nav item when slide changes (handled in main slideChange event above)
 
 // Initialize the first slide
 document.body.setAttribute('data-sld', '0');
 
-// Additional scroll handling for better control
+// Enhanced scroll handling - only change slides at scroll boundaries
 let isScrolling = false;
 let scrollTimeout;
 let lastScrollTime = 0;
+let scrollAttempts = 0;
 
-// Add custom wheel event listener for more precise control
-document.querySelector('.mySwiper').addEventListener('wheel', function(e) {
-  // Prevent default scroll behavior
-  e.preventDefault();
-  
+// Track scroll position and handle slide navigation
+function handleScrollNavigation(e) {
   const currentTime = Date.now();
   
-  // Debounce scroll events to prevent rapid firing
-  if (isScrolling || (currentTime - lastScrollTime) < 800) {
-    return;
+  // Debounce scroll events
+  if (isScrolling || (currentTime - lastScrollTime) < 300) {
+    return false;
   }
   
   // Only respond to significant scroll movements
   const deltaY = Math.abs(e.deltaY);
-  if (deltaY < 10) {
-    return; // Ignore very small scroll movements
+  if (deltaY < 20) {
+    return false;
   }
   
-  isScrolling = true;
-  lastScrollTime = currentTime;
+  const container = document.querySelector('.container');
+  const scrollTop = container.scrollTop;
+  const scrollHeight = container.scrollHeight;
+  const clientHeight = container.clientHeight;
   
-  // Clear any existing timeout
-  clearTimeout(scrollTimeout);
+  const atTop = scrollTop <= 5;
+  const atBottom = scrollTop + clientHeight >= scrollHeight - 5;
   
-  // Determine scroll direction
-  if (e.deltaY > 0) {
-    // Scrolling down - go to next slide
+  let shouldChangeSlide = false;
+  
+  if (e.deltaY > 0 && atBottom) {
+    // Scrolling down at bottom - go to next slide
+    shouldChangeSlide = true;
     swiper.slideNext();
-  } else if (e.deltaY < 0) {
-    // Scrolling up - go to previous slide
+  } else if (e.deltaY < 0 && atTop) {
+    // Scrolling up at top - go to previous slide
+    shouldChangeSlide = true;
     swiper.slidePrev();
   }
   
-  // Reset scrolling flag after a delay
-  scrollTimeout = setTimeout(() => {
-    isScrolling = false;
-  }, 800); // Increased delay for better control
-}, { passive: false });
+  if (shouldChangeSlide) {
+    e.preventDefault();
+    isScrolling = true;
+    lastScrollTime = currentTime;
+    
+    // Reset scrolling flag after delay
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 800);
+    
+    return true;
+  }
+  
+  return false;
+}
+
+// Add wheel event listener to container
+document.querySelector('.container').addEventListener('wheel', handleScrollNavigation, { passive: false });
